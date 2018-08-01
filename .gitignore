@@ -1,0 +1,32 @@
+# File Uploads
+# Only gitignore specific files types otherwise
+# you could delete all uploads on dev or prod
+# public_html/assets/files/**/*.jpg
+
+# File System
+.DS_Store
+*._DS_Store
+._.DS_Store
+*._
+._*
+._.*
+Thumbs.db
+
+# Sass Created
+.sass-cache
+
+# NPM
+node_modules
+
+# Apache Configs
+.htaccess
+htusers
+
+# Vagrant
+.vagrant/machines
+
+# Images
+#images
+#images/*
+#/images
+#/images/*
