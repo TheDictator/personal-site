@@ -22,14 +22,14 @@ const autoprefixer = require('gulp-autoprefixer');
 
 // Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('./public_html/assets/scss/custom/app.scss')
+    return gulp.src('./public_html/assets/scss/custom/_app.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
         .pipe(rename('main.css'))
-        .pipe(gulp.dest('./assets/stylesheets/'))
+        .pipe(gulp.dest('./public_html/assets/stylesheets/'))
         //.pipe(connect.reload());
 });
 
@@ -67,7 +67,7 @@ gulp.task('sass', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     //gulp.watch('./system/user/templates/ide/js.group/*.js', ['lint']);
-    gulp.watch('./public_html/assets/scss/custom/app.scss', ['sass']);
+    gulp.watch('./public_html/assets/scss/custom/_app.scss', ['sass']);
     //gulp.watch('./sandbox/js/ide.js', ['js']);
 });
 
