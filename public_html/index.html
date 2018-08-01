@@ -3,47 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>Kevin Carpenter | Sr. Web Developer</title>
-    <link rel="stylesheet" href="/assets/stylesheets/foundation.css" />
+    <!--<link rel="stylesheet" href="/assets/stylesheets/foundation.css" />-->
     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/base/snipcart.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/assets/stylesheets/main.css" />
+    <link rel="stylesheet" href="/assets/stylesheets/app.css" />
 </head>
 <body>
 <!-- Hero -->
 <section class="et-hero-tabs">
-    <h1>STICKY SLIDER NAV</h1>
-    <h3>Sliding content with sticky tab nav</h3>
-    <div class="et-hero-tabs-container">
-        <a class="et-hero-tab" href="#tab-es6">ES6</a>
-        <a class="et-hero-tab" href="#tab-flexbox">Flexbox</a>
-        <a class="et-hero-tab" href="#tab-react">React</a>
-        <a class="et-hero-tab" href="#tab-angular">Angular</a>
-        <a class="et-hero-tab" href="#tab-other">Other</a>
+    <div class="et-hero-tabs-container et-hero-tabs-container--top">
+        <a class="et-hero-tab" href="#tab-projects">Projects</a>
+        <a class="et-hero-tab" href="#tab-experiences">Experiences</a>
+        <a class="et-hero-tab" href="#tab-skills">Skills</a>
+        <a class="et-hero-tab" href="#tab-education">Education</a>
+        <a class="et-hero-tab" href="#tab-contact">Contact</a>
         <span class="et-hero-tab-slider"></span>
     </div>
 </section>
 
 <!-- Main -->
 <main class="et-main">
-    <section class="et-slide" id="tab-es6">
-        <h1>ES6</h1>
-        <h3>something about es6</h3>
+    <section class="et-slide" id="tab-projects">
+        <h1>Projects</h1>
+        <h3>something about my projects</h3>
     </section>
-    <section class="et-slide" id="tab-flexbox">
-        <h1>Flexbox</h1>
-        <h3>something about flexbox</h3>
+    <section class="et-slide" id="tab-experiences">
+        <h1>Experiences</h1>
+        <h3>something about Experiences</h3>
     </section>
-    <section class="et-slide" id="tab-react">
-        <h1>React</h1>
-        <h3>something about react</h3>
+    <section class="et-slide" id="tab-skills">
+        <h1>Skills</h1>
+        <h3>something about Skills</h3>
     </section>
-    <section class="et-slide" id="tab-angular">
-        <h1>Angular</h1>
-        <h3>something about angular</h3>
+    <section class="et-slide" id="tab-education">
+        <h1>Education</h1>
+        <h3>something about Education</h3>
     </section>
-    <section class="et-slide" id="tab-other">
-        <h1>Other</h1>
-        <h3>something about other</h3>
+    <section class="et-slide" id="tab-contact">
+        <h1>Contact</h1>
+        <h3>something about contacting me.</h3>
+    </section>
+    <section class="et-slide" id="tab-login">
+        <div class="login-wrapper">
+            <div class="login-container">
+                <div class="left">
+                    <div class="login">Login</div>
+                    <div class="eula">By logging in you agree to the ridiculously long terms that you didn't bother to read</div>
+                </div>
+                <div class="right">
+                    <svg viewBox="0 0 320 300">
+                        <defs>
+                            <linearGradient
+                                    inkscape:collect="always"
+                                    id="linearGradient"
+                                    x1="13"
+                                    y1="193.49992"
+                                    x2="307"
+                                    y2="193.49992"
+                                    gradientUnits="userSpaceOnUse">
+                                <stop
+                                        style="stop-color:#AFB42B;"
+                                        offset="0"
+                                        id="stop876" />
+                                <stop
+                                        style="stop-color:#673AB7;"
+                                        offset="1"
+                                        id="stop878" />
+                            </linearGradient>
+                        </defs>
+                        <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+                    </svg>
+                    <div class="form">
+                        <label for="email">Email</label>
+                        <input type="email" id="email">
+                        <label for="password">Password</label>
+                        <input type="password" id="password">
+                        <input type="submit" id="submit" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 <div class="base">
@@ -64,10 +103,10 @@
             </div>
         </div>
     </div>
-    <a class="section-static top" href="#profile"></a>
+    <a class="section-static top et-hero-tab" href="#tab-login"></a>
     <a class="section-static bottom" href="#dashboard"></a>
 </div>
-<div class="grid-container fluid">
+<div class="grid-container fluid" style="display: none;">
     <div class="grid-x grid-margin-x">
         <div id="profile" class="cell small-12">
             <svg class="svg-mask" width="1200px" height="600px" viewBox="0 0 1200 600">
@@ -140,8 +179,9 @@
 <script type="text/javascript" src="/assets/js/slider-nav.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/utils/Draggable.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 <script type="text/javascript" src="/assets/js/photo-wheel.js"></script>
-
+<script type="text/javascript" src="/assets/js/login-box.js"></script>
 <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/152635/CSSPlugin.js"></script>
 <script type="text/javascript">
     $(".menu").click(function(){
