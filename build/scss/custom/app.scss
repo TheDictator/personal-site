@@ -25,7 +25,7 @@ a {
   align-items: center;
   height: 100vh;
   position: relative;
-  overflow: scroll;
+  //overflow: scroll;
   background: #eee;
   text-align: center;
   color: $primary-text;
@@ -52,7 +52,6 @@ a {
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
   background: #fff;
   z-index: 10;
-  overflow: hidden;
   &--top {
     position: fixed;
     top: 0;
