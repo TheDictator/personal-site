@@ -2033,18 +2033,44 @@ nav {
     bottom: 0;
   }
 }
+@mixin dark-overlay{
+  &:before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background:rgb(0,0,0);
+    background: transparent\9;
+    background:rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+}
 .jusitfy-center {
   position: fixed;
-  justify-content: center;
-  height: 100vh;
   display: flex;
+  justify-content: center;
+  height: calc(100vh - 70px);
+  top: 0;
   width: 100%;
   align-items: center;
   flex-direction: column;
-
   .page-header, .page-header > * {
     z-index: 2;
     position: relative;
+  }
+  .page-header {
+    h1, h3 {
+      color: $primaryGreen;
+    }
+    h1 {
+      font-size: 4rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
   }
   .lazy-image {
     position: absolute;
@@ -2053,6 +2079,7 @@ nav {
     top: 0;
     left: 0;
     z-index: 1;
+    @include dark-overlay;
   }
 }
 #tab-contact {
