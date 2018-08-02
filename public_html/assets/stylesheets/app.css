@@ -1766,7 +1766,7 @@ nav {
   font-size: 50%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .fs-fields > li .fs-radio-custom span label {
-    color: rgba(0, 0, 0, 0.4);
+    color: #fff;
     -webkit-transition: color 0.3s;
     transition: color 0.3s; }
 
@@ -1930,6 +1930,8 @@ nav {
       transform: perspective(1000px) rotate3d(0, 1, 0, 180deg); }
     .fs-nav-dots button:hover::before, .fs-nav-dots button.fs-dot-current::before {
       background: #fffed8; }
+    .fs-nav-dots button:hover {
+      cursor: pointer; }
 
 /* Progress bar */
 .fs-progress {
@@ -1947,7 +1949,7 @@ nav {
   top: 0;
   right: 0;
   overflow: hidden;
-  color: rgba(0, 0, 0, 0.4);
+  color: #BDBDBD;
   margin: 40px;
   width: 2em;
   font-weight: 700;
@@ -2078,7 +2080,7 @@ button.fs-continue:hover {
   line-height: 3;
   text-align: center;
   background: transparent;
-  color: rgba(0, 0, 0, 0.3);
+  color: #BDBDBD;
   content: 'or press ENTER';
   font-size: 0.65em;
   pointer-events: none; }
