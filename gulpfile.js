@@ -7,7 +7,12 @@ var gulp        = require('gulp'),
     notify      = require('gulp-notify'),
     sassLint    = require('gulp-sass-lint'),
     sourcemaps  = require('gulp-sourcemaps'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    minifyJS = require('gulp-minify'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify');
+
+
 
 var displayError = function(error) {
     // Initial building up of the error
@@ -48,7 +53,7 @@ var prefixerOptions = {
 // ---------------
 
 gulp.task('styles', function() {
-    return gulp.src('scss/custom/app.scss')
+    return gulp.src('build/scss/custom/app.scss')
         .pipe(plumber({errorHandler: onError}))
         .pipe(sourcemaps.init())
         .pipe(sass(sassOptions))
@@ -61,14 +66,31 @@ gulp.task('styles', function() {
 });
 
 gulp.task('sass-lint', function() {
-    gulp.src('scss/custom/app.scss')
+    gulp.src('build/scss/custom/app.scss')
         .pipe(sassLint())
         .pipe(sassLint.format())
         .pipe(sassLint.failOnError());
 });
 
+gulp.task('js-plugins', function(){
+    return gulp.src(['build/js/scripts/*.js'])
+        .pipe(minifyJS())
+        .pipe(concat('scripts.min.js'))
+        .pipe(uglify({ mangle: false }))
+        .pipe(gulp.dest('public_html/assets/js'));
+});
+
+gulp.task('js-custom', function(){
+    return gulp.src(['build/js/custom/*.js'])
+        .pipe(minifyJS())
+        .pipe(concat('custom.min.js'))
+        .pipe(uglify({ mangle: false }))
+        .pipe(gulp.dest('public_html/assets/js'));
+});
+
 gulp.task('watch', function() {
-    gulp.watch('scss/custom/app.scss', ['styles']);
+    gulp.watch('build/scss/custom/app.scss', ['styles']);
+    gulp.watch('build/js/scripts/*.js', ['js-plugins']);
 });
 
 // BUILD TASKS
