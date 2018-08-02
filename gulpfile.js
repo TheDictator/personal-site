@@ -13,9 +13,8 @@ var gulp        = require('gulp'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin');
 
-
-
 var displayError = function(error) {
+
     // Initial building up of the error
     var errorString = '[' + error.plugin.error.bold + ']';
     errorString += ' ' + error.message.replace("\n",''); // Removes new line at the end
@@ -56,6 +55,7 @@ var prefixerOptions = {
 // Gulp task to minify HTML files
 gulp.task('pages', function() {
     return gulp.src(['./build/index.html'])
+        .pipe(plumber({errorHandler: onError}))
         .pipe(htmlmin({
             collapseWhitespace: true,
             removeComments: true
@@ -85,6 +85,7 @@ gulp.task('sass-lint', function() {
 
 gulp.task('js-plugins', function(){
     return gulp.src(['./build/js/scripts/*.js'])
+        .pipe(plumber({errorHandler: onError}))
         .pipe(minifyJS())
         .pipe(concat('scripts.min.js'))
         .pipe(uglify({ mangle: false }))
@@ -93,6 +94,7 @@ gulp.task('js-plugins', function(){
 
 gulp.task('js-custom', function(){
     return gulp.src(['./build/js/custom/init.js'])
+        .pipe(plumber({errorHandler: onError}))
         .pipe(minifyJS())
         .pipe(concat('custom.min.js'))
         .pipe(uglify({ mangle: false }))
