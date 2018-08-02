@@ -19,14 +19,13 @@ a {
 .et-slide {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
   overflow: scroll;
   background: #eee;
   text-align: center;
-  padding: 0 2em;
   color: $primaryText;
   h1 {
     font-size: 2rem;
@@ -2074,15 +2073,11 @@ nav {
     bottom: 0;
   }
 }
-
-body {
-  background-color: #ECEFF1;
-  color: #37474F;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-}
-
-h1, h2, h3 {
-  font-weight: 200;
+.jusitfy-center {
+  justify-content: center;
+  height: calc(100% - 70px);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
 }

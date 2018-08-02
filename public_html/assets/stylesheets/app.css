@@ -13,14 +13,12 @@ a {
 .et-slide {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
   overflow: scroll;
   background: #eee;
   text-align: center;
-  padding: 0 2em;
   color: #212121; }
   .et-hero-tabs h1,
   .et-slide h1 {
@@ -1498,12 +1496,10 @@ nav {
     padding: 50px 30px 70px 30px;
     bottom: 0; } }
 
-body {
-  background-color: #ECEFF1;
-  color: #37474F;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 300;
-  font-size: 16px; }
-
-h1, h2, h3 {
-  font-weight: 200; }
+.jusitfy-center {
+  justify-content: center;
+  height: calc(100% - 70px);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column; }
