@@ -8,10 +8,6 @@
     <meta name="msapplication-TileColor" content="#00CCFF">
     <!--[if IE]><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><![endif]-->
     <link rel="icon" type="image/png" href="/assets/img/favicons/favicon.png">
-    <link rel="stylesheet" href="/assets/stylesheets/foundation.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/stylesheets/snipcart.min.css">
-    <link rel="stylesheet" href="/assets/stylesheets/main.min.css">
 </head>
 
 <body>
@@ -191,6 +187,26 @@
         </div>
     </section>
 </main>
+<!-- Deferred Styles -->
+<noscript id="deferred-styles">
+    <link rel="stylesheet" href="/assets/stylesheets/foundation.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/stylesheets/snipcart.min.css">
+    <link rel="stylesheet" href="/assets/stylesheets/main.min.css">
+</noscript>
+<script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+</script>
 <script type="text/javascript" src="/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.min.js"></script>
