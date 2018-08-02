@@ -1495,6 +1495,8 @@ nav {
       z-index: 2; }
 
 #tab-contact {
+  justify-content: flex-start;
+  padding-top: 13%;
   background-color: #3b3f45; }
 
 #tab-projects {
@@ -1536,15 +1538,6 @@ nav {
 
 .no-js .fs-form {
   padding: 0 0 6em 0; }
-
-.fs-form-full {
-  top: 32%;
-  margin: 0 auto;
-  width: 70%;
-  max-width: 960px; }
-
-.fs-message-error {
-  max-width: 960px; }
 
 .fs-form-overview {
   padding: 2.5em 30% 6em;
@@ -1650,6 +1643,7 @@ nav {
 .fs-form-full .fs-fields > li label[data-info]::after {
   position: relative;
   display: inline-block;
+  top: 15px;
   margin-left: 10px;
   width: 24px;
   height: 24px;
@@ -1686,7 +1680,13 @@ nav {
 .fs-form-full .fs-fields > li label[data-info]:hover::before {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  transform: translate3d(0, 0, 0);
+  border-color: #CDDC39;
+  color: #CDDC39; }
+
+.fs-form-full .fs-fields > li label[data-info]:hover::before, .fs-form-full .fs-fields > li label[data-info]:hover::after {
+  border-color: #CDDC39;
+  color: #CDDC39; }
 
 .fs-form-full .fs-fields > li label:hover ~ .fs-info {
   opacity: 1;
@@ -1835,7 +1835,8 @@ nav {
 
 .fs-fields textarea:focus {
   outline: none;
-  box-shadow: none; }
+  box-shadow: none;
+  border-color: #CDDC39; }
 
 .fs-form-overview .fs-fields textarea {
   padding: 0;
@@ -2037,18 +2038,18 @@ nav {
 /* Continue button and submit button */
 button.fs-submit, button.fs-continue {
   padding: 0.6em 1.5em;
-  border: 3px solid #232529;
+  border: 3px solid #AFB42B;
   border-radius: 40px;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.4); }
+  color: #CDDC39; }
 
 .fs-form-overview .fs-submit, .no-js .fs-form .fs-submit {
   display: block;
   float: right; }
 
 .fs-form-overview .fs-submit {
-  border-color: #232529;
-  color: #232529; }
+  border-color: #AFB42B;
+  color: #CDDC39; }
 
 button.fs-continue {
   position: absolute;
@@ -2056,14 +2057,18 @@ button.fs-continue {
   bottom: 0;
   margin: 0 40px 60px 0;
   font-size: 1.25em; }
+  button.fs-continue:hover, button.fs-continue:focus {
+    cursor: pointer; }
 
 button.fs-submit:hover, button.fs-submit:focus {
-  background: #232529;
-  color: #fff; }
+  background: #AFB42B;
+  color: #fff;
+  cursor: pointer; }
 
 button.fs-continue:hover {
-  background: #232529;
-  color: #fff; }
+  background: #AFB42B;
+  color: #fff;
+  cursor: pointer; }
 
 .fs-continue::after {
   position: absolute;

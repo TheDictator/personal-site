@@ -2083,6 +2083,8 @@ nav {
   }
 }
 #tab-contact {
+  justify-content: flex-start;
+  padding-top: 13%;
   background-color: #3b3f45;
 }
 #tab-projects {
@@ -2134,17 +2136,6 @@ nav {
 
 .no-js .fs-form {
   padding: 0 0 6em 0;
-}
-
-.fs-form-full {
-  top: 32%;
-  margin: 0 auto;
-  width: 70%;
-  max-width: 960px;
-}
-
-.fs-message-error {
-  max-width: 960px;
 }
 
 .fs-form-overview {
@@ -2292,6 +2283,7 @@ nav {
       &::after {
         position: relative;
         display: inline-block;
+        top: 15px;
         margin-left: 10px;
         width: 24px;
         height: 24px;
@@ -2329,6 +2321,14 @@ nav {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
+        border-color: $primaryGreen;
+        color: $primaryGreen;
+      }
+      &:hover {
+        &::before, &::after {
+          border-color: $primaryGreen;
+          color: $primaryGreen;
+        }
       }
     }
     &:hover ~ .fs-info {
@@ -2508,6 +2508,7 @@ nav {
 .fs-fields textarea:focus {
   outline: none;
   box-shadow: none;
+  border-color: $primaryGreen;
 }
 
 .fs-form-overview .fs-fields textarea {
@@ -2782,10 +2783,10 @@ nav {
 button {
   &.fs-submit, &.fs-continue {
     padding: 0.6em 1.5em;
-    border: 3px solid #232529;
+    border: 3px solid $primaryGreenHover;
     border-radius: 40px;
     font-weight: 700;
-    color: rgba(0, 0, 0, 0.4);
+    color: $primaryGreen;
   }
 }
 
@@ -2795,8 +2796,8 @@ button {
 }
 
 .fs-form-overview .fs-submit {
-  border-color: #232529;
-  color: #232529;
+  border-color: $primaryGreenHover;
+  color: $primaryGreen;
 }
 
 button {
@@ -2806,16 +2807,21 @@ button {
     bottom: 0;
     margin: 0 40px 60px 0;
     font-size: 1.25em;
+    &:hover, &:focus {
+      cursor: pointer;
+    }
   }
   &.fs-submit {
     &:hover, &:focus {
-      background: #232529;
+      background: $primaryGreenHover;
       color: #fff;
+      cursor: pointer;
     }
   }
   &.fs-continue:hover {
-    background: #232529;
+    background: $primaryGreenHover;
     color: #fff;
+    cursor: pointer;
   }
 }
 
