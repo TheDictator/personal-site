@@ -2648,7 +2648,7 @@ nav {
   top: 0;
   right: 0;
   overflow: hidden;
-  color: $lightText;
+  color: $lightGrayText;
   margin: 40px;
   width: 2em;
   font-weight: 700;
@@ -2829,7 +2829,6 @@ button {
     cursor: pointer;
   }
 }
-
 .fs-continue::after {
   position: absolute;
   top: 100%;
@@ -2838,7 +2837,7 @@ button {
   line-height: 3;
   text-align: center;
   background: transparent;
-  color: $lightText;
+  color: $lightGrayText;
   content: 'or press ENTER';
   font-size: 0.65em;
   pointer-events: none;

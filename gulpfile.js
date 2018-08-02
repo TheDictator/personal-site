@@ -1,17 +1,83 @@
-var gulp        = require('gulp');
-var sass        = require('gulp-sass');
+var gulp        = require('gulp'),
+    sass        = require('gulp-sass'),
+    rename      = require('gulp-rename'),
+    cssmin      = require('gulp-cssnano'),
+    prefix      = require('gulp-autoprefixer'),
+    plumber     = require('gulp-plumber'),
+    notify      = require('gulp-notify'),
+    sassLint    = require('gulp-sass-lint'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    runSequence = require('run-sequence');
 
-// Static Server + watching scss/html files
-gulp.task('serve', function() {
+var displayError = function(error) {
+    // Initial building up of the error
+    var errorString = '[' + error.plugin.error.bold + ']';
+    errorString += ' ' + error.message.replace("\n",''); // Removes new line at the end
 
-    gulp.watch("scss/custom/app.scss", ['sass']);
+    // If the error contains the filename or line number add it to the string
+    if(error.fileName)
+        errorString += ' in ' + error.fileName;
+
+    if(error.lineNumber)
+        errorString += ' on line ' + error.lineNumber.bold;
+
+    // This will output an error like the following:
+    // [gulp-sass] error message in file_name on line 1
+    console.error(errorString);
+};
+
+var onError = function(err) {
+    notify.onError({
+        title:    "Gulp",
+        subtitle: "Failure!",
+        message:  "Error: <%= error.message %>",
+        sound:    "Basso"
+    })(err);
+    this.emit('end');
+};
+
+var sassOptions = {
+    outputStyle: 'expanded'
+};
+
+var prefixerOptions = {
+    browsers: ['last 2 versions']
+};
+
+// BUILD SUBTASKS
+// ---------------
+
+gulp.task('styles', function() {
+    return gulp.src('scss/custom/app.scss')
+        .pipe(plumber({errorHandler: onError}))
+        .pipe(sourcemaps.init())
+        .pipe(sass(sassOptions))
+        .pipe(prefix(prefixerOptions))
+        .pipe(rename('main.css'))
+        .pipe(gulp.dest('css'))
+        .pipe(cssmin())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('public_html/assets/stylesheets'))
 });
 
-// Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', function() {
-    return gulp.src("scss/custom/app.scss")
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest("public_html/assets/stylesheets"));
+gulp.task('sass-lint', function() {
+    gulp.src('scss/custom/app.scss')
+        .pipe(sassLint())
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError());
 });
 
-gulp.task('default', ['sass', 'serve']);
+gulp.task('watch', function() {
+    gulp.watch('scss/custom/app.scss', ['styles']);
+});
+
+// BUILD TASKS
+// ------------
+
+gulp.task('default', function(done) {
+    runSequence('styles', 'watch', done);
+});
+
+gulp.task('build', function(done) {
+    runSequence('styles', done);
+});
