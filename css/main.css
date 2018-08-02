@@ -3069,16 +3069,14 @@ button.fs-continue:hover {
   position: absolute;
   text-align: left;
   bottom: 75%;
-  left: 50%;
+  left: 0;
   z-index: 800;
   max-width: 960px;
-  width: 70%;
+  width: 100%;
   color: #eb7e7f;
   font-weight: 700;
   font-size: 1em;
   opacity: 0;
-  -webkit-transform: translate3d(-50%, -5px, 0);
-  transform: translate3d(-50%, -5px, 0);
 }
 
 .fs-message-error.fs-show {
@@ -3088,8 +3086,6 @@ button.fs-continue:hover {
   transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: transform 0.3s, opacity 0.3s;
   transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-  -webkit-transform: translate3d(-50%, 0, 0);
-  transform: translate3d(-50%, 0, 0);
 }
 
 /* Animation classes & animations */
