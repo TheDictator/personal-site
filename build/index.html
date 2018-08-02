@@ -13,10 +13,13 @@
 <body>
 <section class="et-hero-tabs">
     <div class="jusitfy-center">
+        <!--  Video is muted & autoplays, placed after major DOM elements for performance & has an image fallback  -->
+        <video autoplay loop id="video-background" muted plays-inline>
+            <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">
+        </video>
         <div class="page-header">
             <h1>Kevin Carpenter</h1>
             <h3>Developer & Solutionist</h3></div>
-        <div class="lazy-image" style="background-image: url(https://loremflickr.com/3200/1800/dark);" data-image-full="https://loremflickr.com/3200/1800/dark"><img class="img-responsive" src="https://loremflickr.com/3200/1800/dark"></div>
     </div>
     <div class="et-hero-tabs-container">
         <div class="base">
@@ -113,19 +116,19 @@
                             <ol class="fs-fields">
                                 <li>
                                     <label class="fs-field-label fs-anim-upper" for="q1">What's your name?</label>
-                                    <input class="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Dean Moriarty" required>
+                                    <input class="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Dean Moriarty" required tabindex="0">
                                 </li>
                                 <li>
                                     <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">What's your email address?</label>
-                                    <input class="fs-anim-lower" id="q2" name="q2" type="email" placeholder="dean@road.us" required>
+                                    <input class="fs-anim-lower" id="q2" name="q2" type="email" placeholder="dean@road.us" required tabindex="2">
                                 </li>
                                 <li data-input-trigger>
                                     <label class="fs-field-label fs-anim-upper" for="q3b" data-info="This will help us know what kind of service you need">What's your priority for your new website?</label>
-                                    <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower"><span><input id="q3b" name="q3" type="radio" value="conversion"><label for="q3b" class="radio-conversion">Sell things</label></span> <span><input id="q3c" name="q3" type="radio" value="social"><label for="q3c" class="radio-social">Become famous</label></span> <span><input id="q3a" name="q3" type="radio" value="mobile"><label for="q3a" class="radio-mobile">Mobile market</label></span></div>
+                                    <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower"  tabindex="3"><span><input id="q3b" name="q3" type="radio" value="conversion"><label for="q3b" class="radio-conversion">Sell things</label></span> <span><input id="q3c" name="q3" type="radio" value="social"><label for="q3c" class="radio-social">Become famous</label></span> <span><input id="q3a" name="q3" type="radio" value="mobile"><label for="q3a" class="radio-mobile">Mobile market</label></span></div>
                                 </li>
                                 <li data-input-trigger>
                                     <label class="fs-field-label fs-anim-upper" data-info="We'll make sure to use it all over">Choose a color for your website.</label>
-                                    <select class="cs-select cs-skin-boxes fs-anim-lower">
+                                    <select class="cs-select cs-skin-boxes fs-anim-lower"  tabindex="4">
                                         <option value="" disabled="disabled" selected="selected">Pick a color</option>
                                         <option value="#588c75" data-class="color-588c75">#588c75</option>
                                         <option value="#b0c47f" data-class="color-b0c47f">#b0c47f</option>
@@ -151,14 +154,14 @@
                                 </li>
                                 <li>
                                     <label class="fs-field-label fs-anim-upper" for="q4">Describe how you imagine your new website</label>
-                                    <textarea class="fs-anim-lower" id="q4" name="q4" placeholder="Describe here"></textarea>
+                                    <textarea class="fs-anim-lower" id="q4" name="q4" placeholder="Describe here" tabindex="5"></textarea>
                                 </li>
                                 <li>
                                     <label class="fs-field-label fs-anim-upper" for="q5">What's your budget?</label>
-                                    <input class="fs-mark fs-anim-lower" id="q5" name="q5" type="number" placeholder="1000" step="100" min="100">
+                                    <input class="fs-mark fs-anim-lower" id="q5" name="q5" type="number" placeholder="1000" step="100" min="100"  tabindex="6">
                                 </li>
                             </ol>
-                            <button class="fs-submit" type="submit">Send answers</button>
+                            <button class="fs-submit" type="submit" tabindex="7">Send answers</button>
                         </form>
                     </div>
                 </div>
@@ -166,8 +169,8 @@
         </div>
     </section>
     <section class="et-slide" id="tab-login">
-        <div class="login-wrapper">
-            <div class="login-container" style="display:none;">
+        <div class="login-wrapper" style="display:none;">
+            <div class="login-container">
                 <div class="left">
                     <div class="login">Login</div>
                     <div class="eula">By logging in you agree to the ridiculously long terms that you didn't bother to read</div>
@@ -184,10 +187,10 @@
                     </svg>
                     <div class="form">
                         <label for="email">Email</label>
-                        <input type="email" id="email">
+                        <input type="email" id="email" tabindex="-1">
                         <label for="password">Password</label>
-                        <input type="password" id="password">
-                        <input type="submit" id="submit" value="Submit">
+                        <input type="password" id="password" tabindex="-1">
+                        <input type="submit" id="submit" value="Submit" tabindex="-1">
                     </div>
                 </div>
             </div>
@@ -228,35 +231,38 @@ $('.section-static').click(function() {
     $('.section-static').removeClass("active-tab");
     $(this).addClass("active-tab");
 });
-    $(function() {
-        $('.material-card > .mc-btn-action').click(function () {
-            var card = $(this).parent('.material-card');
-            var icon = $(this).children('i');
-            icon.addClass('fa-spin-fast');
+$("[href='#tab-contact']").click(function(){
+    $('#q1').focus();
+});
+$(function() {
+    $('.material-card > .mc-btn-action').click(function () {
+        var card = $(this).parent('.material-card');
+        var icon = $(this).children('i');
+        icon.addClass('fa-spin-fast');
 
-            if (card.hasClass('mc-active')) {
-                card.removeClass('mc-active');
+        if (card.hasClass('mc-active')) {
+            card.removeClass('mc-active');
 
-                window.setTimeout(function() {
-                    icon
-                        .removeClass('fa-minus')
-                        .removeClass('fa-spin-fast')
-                        .addClass('fa-plus');
+            window.setTimeout(function() {
+                icon
+                    .removeClass('fa-minus')
+                    .removeClass('fa-spin-fast')
+                    .addClass('fa-plus');
 
-                }, 800);
-            } else {
-                card.addClass('mc-active');
+            }, 800);
+        } else {
+            card.addClass('mc-active');
 
-                window.setTimeout(function() {
-                    icon
-                        .removeClass('fa-plus')
-                        .removeClass('fa-spin-fast')
-                        .addClass('fa-minus');
+            window.setTimeout(function() {
+                icon
+                    .removeClass('fa-plus')
+                    .removeClass('fa-spin-fast')
+                    .addClass('fa-minus');
 
-                }, 800);
-            }
-        });
+            }, 800);
+        }
     });
+});
 </script>
 <script>(function() {
     var formWrap = document.getElementById( 'fs-form-wrap' );

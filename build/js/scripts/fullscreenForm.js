@@ -270,6 +270,7 @@
 			this._updateFieldNumber();
 
 			var nextField = this.fields[ this.current ];
+			//nextField.next('input').focus();
 			classie.add( nextField, 'fs-current' );
 			classie.add( nextField, 'fs-show' );
 		}
