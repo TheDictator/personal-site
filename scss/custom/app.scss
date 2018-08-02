@@ -38,6 +38,8 @@ a {
     font-size: 1rem;
     letter-spacing: 0.3rem;
     opacity: 0.6;
+    margin-bottom: 4rem;
+
   }
 }
 .et-hero-tabs-container {
@@ -2108,14 +2110,15 @@ nav {
   background-color: #3b3f45;
 }
 #tab-projects {
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 4%;
 }
 .fa {
   position: relative;
   top: 1px;
 }
 .grid-container {
-  width: 75rem;
+  width: 80%;
 }
 
 // Full Screen Form Wizard

@@ -44,6 +44,7 @@ a {
   font-size: 1rem;
   letter-spacing: 0.3rem;
   opacity: 0.6;
+  margin-bottom: 4rem;
 }
 
 .et-hero-tabs-container {
@@ -2337,9 +2338,10 @@ nav .next {
 }
 
 #tab-projects {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-top: 4%;
 }
 
 .fa {
@@ -2348,7 +2350,7 @@ nav .next {
 }
 
 .grid-container {
-  width: 75rem;
+  width: 80%;
 }
 
 /* Main form wrapper */

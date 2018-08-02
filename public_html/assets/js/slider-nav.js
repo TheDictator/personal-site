@@ -10,7 +10,7 @@ class StickyNavigation {
         });
         $(window).scroll(() => { this.onScroll(); });
         $(window).resize(() => { this.onResize(); });
-        $('.section-static').click(function() {
+        $('.section-static, .cover2 .content').click(function() {
             $('.close .menu').click();
         });
     }
