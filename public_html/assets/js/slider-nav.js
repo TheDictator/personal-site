@@ -10,6 +10,9 @@ class StickyNavigation {
         });
         $(window).scroll(() => { this.onScroll(); });
         $(window).resize(() => { this.onResize(); });
+        $('.section-static').click(function() {
+            $('.close .menu').click();
+        });
     }
 
     onTabClick(event, element) {
