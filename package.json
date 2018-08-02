@@ -16,6 +16,7 @@
     "gulp-sass-lint": "^1.3.9",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-htmlmin": "^3.0.0",
     "run-sequence": "^2.2.0"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
     "gulp-sass-lint": "^1.3.9",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-htmlmin": "^3.0.0",
     "run-sequence": "^2.2.0"
   },
   "scripts": {
@@ -38,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:graybox/myidcare.git"
+    "url": "https://github.com/TheDictator/personal-site.git"
   },
   "author": "Kevin Carpenter",
   "license": "ISC"

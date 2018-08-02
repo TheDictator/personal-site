@@ -10,7 +10,8 @@ var gulp        = require('gulp'),
     runSequence = require('run-sequence'),
     minifyJS = require('gulp-minify'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    htmlmin = require('gulp-htmlmin');
 
 
 
@@ -52,46 +53,57 @@ var prefixerOptions = {
 // BUILD SUBTASKS
 // ---------------
 
+// Gulp task to minify HTML files
+gulp.task('pages', function() {
+    return gulp.src(['./build/index.html'])
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
+        .pipe(gulp.dest('./public_html'));
+});
+
 gulp.task('styles', function() {
-    return gulp.src('build/scss/custom/app.scss')
+    return gulp.src('./build/scss/custom/app.scss')
         .pipe(plumber({errorHandler: onError}))
         .pipe(sourcemaps.init())
         .pipe(sass(sassOptions))
         .pipe(prefix(prefixerOptions))
         .pipe(rename('main.css'))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('./public_html/assets/stylesheets'))
         .pipe(cssmin())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('public_html/assets/stylesheets'))
+        .pipe(gulp.dest('./public_html/assets/stylesheets'))
 });
 
 gulp.task('sass-lint', function() {
-    gulp.src('build/scss/custom/app.scss')
+    gulp.src('./build/scss/custom/app.scss')
         .pipe(sassLint())
         .pipe(sassLint.format())
         .pipe(sassLint.failOnError());
 });
 
 gulp.task('js-plugins', function(){
-    return gulp.src(['build/js/scripts/*.js'])
+    return gulp.src(['./build/js/scripts/*.js'])
         .pipe(minifyJS())
         .pipe(concat('scripts.min.js'))
         .pipe(uglify({ mangle: false }))
-        .pipe(gulp.dest('public_html/assets/js'));
+        .pipe(gulp.dest('./public_html/assets/js'));
 });
 
 gulp.task('js-custom', function(){
-    return gulp.src(['build/js/custom/init.js'])
+    return gulp.src(['./build/js/custom/init.js'])
         .pipe(minifyJS())
         .pipe(concat('custom.min.js'))
         .pipe(uglify({ mangle: false }))
-        .pipe(gulp.dest('public_html/assets/js'));
+        .pipe(gulp.dest('./public_html/assets/js'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch('build/scss/custom/app.scss', ['styles']);
-    gulp.watch('build/js/scripts/*.js', ['js-plugins']);
-    gulp.watch('build/js/custom/init.js', ['js-custom']);
+    gulp.watch('./build/scss/custom/app.scss', ['styles']);
+    gulp.watch('./build/js/scripts/*.js', ['js-plugins']);
+    gulp.watch('./build/js/custom/init.js', ['js-custom']);
+    gulp.watch('./build/index.html', ['pages']);
 });
 
 // BUILD TASKS
