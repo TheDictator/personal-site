@@ -35,30 +35,30 @@
         </div>
         <div class="icons">
             <i class="fa fa-user" aria-hidden="true"></i>
-            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+            <i class="fa fa-envelope-open" aria-hidden="true"></i>
             <i class="fa fa-tachometer" aria-hidden="true"></i>
         </div>
         <div class="section">
             <div class="cover1">
                 <div class="cover2">
-                    <a class="content" href="#calender"></a>
+                    <a class="content is-active" href="#tab-contact"></a>
                 </div>
             </div>
         </div>
-        <a class="section-static top et-hero-tab" href="#tab-login"></a>
+        <a class="section-static top" href="#tab-login"></a>
         <a class="section-static bottom" href="#dashboard"></a>
     </div>
     <section class="et-slide" id="tab-projects">
             <!-- Material Card Design -->
-        <div class="grid-container fluid">
+        <div class="grid-container">
             <div class="grid-x grid-padding-x small-up-2 medium-up-3">
                 <div class="cell">
                     <article class="material-card Red">
                         <h2>
-                            <span>Christopher Walken</span>
+                            <span>Project #1</span>
                             <strong>
-                                <i class="fa fa-fw fa-star"></i>
-                                The Deer Hunter
+                                <i class="fa fa-shopping-cart"></i>
+                                E-Commerce
                             </strong>
                         </h2>
                         <div class="mc-content">
@@ -66,20 +66,18 @@
                                 <img class="img-responsive" src="https://loremflickr.com/500/600/design?lock=1">
                             </div>
                             <div class="mc-description">
-                                He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                                Project Description Here
                             </div>
                         </div>
                         <a class="mc-btn-action">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
                         <div class="mc-footer">
                             <h4>
-                                Social
+                                Magento, Foundation
                             </h4>
-                            <a class="fa fa-fw fa-facebook"></a>
-                            <a class="fa fa-fw fa-twitter"></a>
-                            <a class="fa fa-fw fa-linkedin"></a>
-                            <a class="fa fa-fw fa-google-plus"></a>
+                            <a class="fa fa-link"></a>
+                            <a class="fa fa-image"></a>
                         </div>
                     </article>
                 </div>
@@ -101,7 +99,7 @@
                             </div>
                         </div>
                         <a class="mc-btn-action">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
                         <div class="mc-footer">
                             <h4>
@@ -132,7 +130,7 @@
                             </div>
                         </div>
                         <a class="mc-btn-action">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
                         <div class="mc-footer">
                             <h4>
@@ -163,7 +161,7 @@
                             </div>
                         </div>
                         <a class="mc-btn-action">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
                         <div class="mc-footer">
                             <h4>
@@ -194,7 +192,7 @@
                             </div>
                         </div>
                         <a class="mc-btn-action">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
                         <div class="mc-footer">
                             <h4>
@@ -225,7 +223,7 @@
                             </div>
                         </div>
                         <a class="mc-btn-action">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
                         <div class="mc-footer">
                             <h4>
@@ -382,6 +380,10 @@
 <script type="text/javascript">
     $(".menu").click(function(){
         $(this).parent().toggleClass("close");
+    });
+    $('.section-static').click(function() {
+        $('.section-static').removeClass("active-tab");
+        $(this).addClass("active-tab");
     });
 </script>
 </body>

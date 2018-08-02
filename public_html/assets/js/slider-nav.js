@@ -55,7 +55,7 @@ class StickyNavigation {
                 newCurrentTab.addClass('active-tab');
             }
         });
-        if(this.currentId != newCurrentId || this.currentId === null || this.currentId == "#tab-login") {
+        if(this.currentId != newCurrentId || this.currentId === null) {
             this.currentId = newCurrentId;
             this.currentTab = newCurrentTab;
             this.setSliderCss();
