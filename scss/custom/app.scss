@@ -2034,12 +2034,26 @@ nav {
   }
 }
 .jusitfy-center {
+  position: fixed;
   justify-content: center;
-  height: calc(100% - 70px);
+  height: 100vh;
   display: flex;
   width: 100%;
   align-items: center;
   flex-direction: column;
+
+  .page-header, .page-header > * {
+    z-index: 2;
+    position: relative;
+  }
+  .lazy-image {
+    position: absolute;
+    width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 }
 #tab-contact {
   background-color: #3b3f45;
