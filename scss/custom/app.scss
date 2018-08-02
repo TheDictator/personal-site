@@ -1,8 +1,13 @@
-$m: #673AB7;
+// Color Variables
+
+$primary: #673AB7;
 $iconmargin: 35px;
 $primaryGreen: #CDDC39;
 $primaryGreenHover: #AFB42B;
 $primaryText: #212121;
+$mediumGrayTExt: #757575;
+$lightGrayText: #BDBDBD;
+
 body {
   font-family: 'Raleway', sans-serif;
   color: $primaryText;
@@ -11,9 +16,6 @@ body {
 
 a {
   text-decoration: none;
-  //&:focus {
-  //  color: $primaryGreen;
-  //}
 }
 .et-hero-tabs,
 .et-slide {
@@ -109,7 +111,7 @@ a {
 }
 
 body {
-  background-color: $m;
+  background-color: $primary;
   overflow-x:hidden;
   .base {
     z-index: 90;
@@ -155,7 +157,7 @@ body {
           left: 0px;
           right: 0px;
           border-radius: 5px;
-          background-color: $m;
+          background-color: $primary;
         }
         .bar {
           transition: opacity 0s linear 0.5s, background-color 0.75s ease 0.25s;
@@ -179,7 +181,7 @@ body {
       >* {
         position: absolute;
         font-size:40px;
-        color:$m;
+        color:$primary;
         transition: 0.3s cubic-bezier(0.50, -0.25, 0.05, 1);
       }
       .fa-lock {
@@ -271,7 +273,7 @@ body {
         width: 150px;
         height: 150px;
         transition: all 1s cubic-bezier(0.50, 0, 0.05, 1.75), background-color 1s ease;
-        background-color: $m;
+        background-color: $primary;
         .icon {
           .bar,
           &:before,
@@ -302,7 +304,7 @@ body {
         >* {
           position: absolute;
           font-size:40px;
-          color:$m;
+          color:$primary;
           transition: 0.3s cubic-bezier(0.50, 0, 0.05, 1.75) 0.7s;
           pointer-events:none;
         }
@@ -1561,10 +1563,10 @@ nav {
   }
   &.Lime {
     h2 {
-      background-color: #CDDC39;
+      background-color: $primaryGreen;
       &:after {
-        border-top-color: #CDDC39;
-        border-right-color: #CDDC39;
+        border-top-color: $primaryGreen;
+        border-right-color: $primaryGreen;
         border-bottom-color: transparent;
         border-left-color: transparent;
       }
@@ -1578,8 +1580,8 @@ nav {
     &.mc-active h2 {
       &:before {
         border-top-color: transparent;
-        border-right-color: #CDDC39;
-        border-bottom-color: #CDDC39;
+        border-right-color: $primaryGreen;
+        border-bottom-color: $primaryGreen;
         border-left-color: transparent;
       }
       &:after {
@@ -1590,7 +1592,7 @@ nav {
       }
     }
     .mc-btn-action {
-      background-color: #CDDC39;
+      background-color: $primaryGreen;
       &:hover {
         background-color: #827717;
       }
@@ -1906,8 +1908,8 @@ nav {
       }
       &:before {
         border-top-color: transparent;
-        border-right-color: #212121;
-        border-bottom-color: #212121;
+        border-right-color: $primaryText;
+        border-bottom-color: $primaryText;
         border-left-color: transparent;
       }
     }
@@ -1919,8 +1921,8 @@ nav {
         border-left-color: transparent;
       }
       &:after {
-        border-top-color: #212121;
-        border-right-color: #212121;
+        border-top-color: $primaryText;
+        border-right-color: $primaryText;
         border-bottom-color: transparent;
         border-left-color: transparent;
       }
@@ -1928,15 +1930,15 @@ nav {
     .mc-btn-action {
       background-color: #9E9E9E;
       &:hover {
-        background-color: #212121;
+        background-color: $primaryText;
       }
     }
     .mc-footer {
       h4 {
-        color: #212121;
+        color: $primaryText;
       }
       a {
-        background-color: #212121;
+        background-color: $primaryText;
       }
     }
     &.mc-active {
@@ -2358,7 +2360,7 @@ nav {
   border-color: transparent;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   background-color: transparent;
-  color: #CDDC39;
+  color: $primaryGreen;
   text-overflow: ellipsis;
   font-weight: bold;
   font-size: 1.5em;
@@ -2480,7 +2482,7 @@ nav {
     }
   }
   .fs-radio-custom input[type="radio"]:checked + label {
-    color: #CDDC39;
+    color: $primaryGreen;
   }
 }
 
@@ -2494,7 +2496,7 @@ nav {
   height: 200px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   background-color: transparent;
-  color: #CDDC39;
+  color: $primaryGreen;
   font-weight: 700;
   font-size: 0.85em;
   resize: none;
@@ -2646,7 +2648,7 @@ nav {
   top: 0;
   right: 0;
   overflow: hidden;
-  color: #BDBDBD;
+  color: $lightText;
   margin: 40px;
   width: 2em;
   font-weight: 700;
@@ -2836,7 +2838,7 @@ button {
   line-height: 3;
   text-align: center;
   background: transparent;
-  color: #BDBDBD;
+  color: $lightText;
   content: 'or press ENTER';
   font-size: 0.65em;
   pointer-events: none;
