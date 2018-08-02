@@ -2084,7 +2084,13 @@ nav {
   align-items: center;
   flex-direction: column;
 }
+#tab-projects {
+  justify-content: center;
+}
 .fa {
   position: relative;
   top: 1px;
+}
+.grid-container {
+  width: 75rem;
 }
