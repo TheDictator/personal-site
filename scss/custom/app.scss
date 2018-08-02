@@ -115,7 +115,7 @@ body {
   overflow-x:hidden;
   .base {
     z-index: 90;
-    position: fixed;
+    position: relative;
     top: 0px;
     left: 0px;
     background-color: #FFFFFF;
@@ -2289,8 +2289,8 @@ nav {
         margin-left: 10px;
         width: 24px;
         height: 24px;
-        border: 2px solid rgba(0, 0, 0, 0.4);
-        color: rgba(0, 0, 0, 0.4);
+        border: 2px solid $lightGrayText;
+        color: $lightGrayText;
         border-radius: 50%;
         content: 'i';
         vertical-align: top;
@@ -2612,7 +2612,7 @@ nav {
       text-indent: 0;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: $lightGrayText;
       -webkit-transform: perspective(1000px) rotate3d(0, 1, 0, 180deg);
       transform: perspective(1000px) rotate3d(0, 1, 0, 180deg);
     }
