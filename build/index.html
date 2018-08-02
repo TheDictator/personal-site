@@ -227,7 +227,38 @@ $(".menu").click(function(){
 $('.section-static').click(function() {
     $('.section-static').removeClass("active-tab");
     $(this).addClass("active-tab");
-});</script><script>(function() {
+});
+    $(function() {
+        $('.material-card > .mc-btn-action').click(function () {
+            var card = $(this).parent('.material-card');
+            var icon = $(this).children('i');
+            icon.addClass('fa-spin-fast');
+
+            if (card.hasClass('mc-active')) {
+                card.removeClass('mc-active');
+
+                window.setTimeout(function() {
+                    icon
+                        .removeClass('fa-minus')
+                        .removeClass('fa-spin-fast')
+                        .addClass('fa-plus');
+
+                }, 800);
+            } else {
+                card.addClass('mc-active');
+
+                window.setTimeout(function() {
+                    icon
+                        .removeClass('fa-plus')
+                        .removeClass('fa-spin-fast')
+                        .addClass('fa-minus');
+
+                }, 800);
+            }
+        });
+    });
+</script>
+<script>(function() {
     var formWrap = document.getElementById( 'fs-form-wrap' );
 
     [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
@@ -244,4 +275,6 @@ $('.section-static').click(function() {
             classie.add( document.body, 'overview' );
         }
     } );
-})();</script><script type="text/javascript" src="/assets/js/slider-nav.js"></script></body></html>
+})();</script>
+
+<script type="text/javascript" src="/assets/js/slider-nav.js"></script></body></html>
