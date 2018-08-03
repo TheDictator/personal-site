@@ -2235,15 +2235,14 @@ nav {
 }
 
 .fs-form-overview {
-  padding: 2.5em 30% 6em;
   width: 100%;
   height: 100%;
-  background: #512DA8;
   color: #512DA8;
   font-size: 1.2em;
+  margin-top: -10%;
   .fs-fields::before {
     display: block;
-    margin-bottom: 2.5em;
+    margin-bottom: 3rem;
     color: $primary-green-hover;
     content: 'Review & Submit';
     font-weight: 700;
@@ -2342,12 +2341,18 @@ nav {
     margin: 0;
     padding: 0;
     border: none;
+    clear: both;
     &:hover {
       z-index: 999;
     }
   }
 }
-
+.fs-radio-group {
+  display: flex;
+  &:focus, &:hover {
+    outline: 0;
+  }
+}
 .js .fs-form-full .fs-fields > li {
   position: absolute;
   width: 100%;
@@ -2355,7 +2360,6 @@ nav {
 
 .fs-form-overview .fs-fields > li, .no-js .fs-form .fs-fields > li {
   margin: 1em 0 2em;
-  padding: 0 0 2em 0;
   border-bottom: 2px solid rgba(0, 0, 0, .1);
 }
 
@@ -2365,10 +2369,9 @@ nav {
   position: relative;
   &.fs-field-label {
     display: inline-block;
-    padding: 0 5px 1em 0;
     font-weight: 700;
     pointer-events: none;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     color: #fff;
   }
 }
@@ -2473,7 +2476,7 @@ nav {
 
 .fs-form-overview .fs-fields input {
   border-bottom-color: transparent;
-  color: rgba(0, 0, 0, 0.5);
+  color: $primary-green;
 }
 
 .fs-fields {
@@ -2598,7 +2601,7 @@ nav {
 
 .fs-form-overview .fs-fields textarea {
   height: 100px;
-  color: rgba(0, 0, 0, 0.5);
+  color: $primary-green;
 }
 
 .fs-fields textarea:focus {
@@ -2608,10 +2611,8 @@ nav {
 }
 
 .fs-form-overview .fs-fields textarea {
-  padding: 0;
-  border-color: transparent;
   &:focus {
-    background: #fffed8;
+    //background: #fffed8;
   }
 }
 
@@ -2629,11 +2630,15 @@ nav {
     box-shadow: 0 20px 0 #292c30, inset 0 -5px #292c30;
   }
 }
-
+.fs-form-over .fs-fields input.fs-mark {
+  &:focus {
+    border-color: rgba(205,220,57,.8) !important;
+  }
+}
 .fs-fields {
   input {
     &.fs-mark {
-      padding-left: 1em;
+      padding-left: 3em;
       background-image: url(../img/dollar.svg);
       background-position: 0% .15em;
       background-size: auto 75%;

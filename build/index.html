@@ -119,20 +119,26 @@
                             <form id="myform" class="fs-form fs-form-full" autocomplete="off">
                                 <ol class="fs-fields">
                                     <li>
-                                        <label class="fs-field-label fs-anim-upper" for="q1">What's your name?</label>
-                                        <input class="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Dean Moriarty" required tabindex="0">
+                                        <label class="fs-field-label fs-anim-upper" for="name">What's your name?</label>
+                                        <input class="fs-anim-lower" id="name" name="name" type="text" placeholder="Jeff Smoltz" required tabindex="0">
                                     </li>
                                     <li>
-                                        <label class="fs-field-label fs-anim-upper" for="q2" data-info="We won't send you spam, we promise...">What's your email address?</label>
-                                        <input class="fs-anim-lower" id="q2" name="q2" type="email" placeholder="dean@road.us" required tabindex="2">
+                                        <label class="fs-field-label fs-anim-upper" for="email" data-info="Spam? Not once, not never...">What's your email address?</label>
+                                        <input class="fs-anim-lower" id="email" name="email" type="email" placeholder="ric.flair@wcw.com" required tabindex="2">
                                     </li>
                                     <li data-input-trigger>
-                                        <label class="fs-field-label fs-anim-upper" for="q3b" data-info="This will help us know what kind of service you need">What's your priority for your new website?</label>
-                                        <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower"  tabindex="3"><span><input id="q3b" name="q3" type="radio" value="conversion"><label for="q3b" class="radio-conversion">Sell things</label></span> <span><input id="q3c" name="q3" type="radio" value="social"><label for="q3c" class="radio-social">Become famous</label></span> <span><input id="q3a" name="q3" type="radio" value="mobile"><label for="q3a" class="radio-mobile">Mobile market</label></span></div>
+                                        <label class="fs-field-label fs-anim-upper" for="priority" data-info="This will help us know what kind of service you need">What's your priority for your new website?</label>
+                                        <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower"  tabindex="3">
+                                            <span><input id="priority" name="priority" type="radio" value="conversion">
+                                                <label for="priority" class="radio-conversion">Sell things</label>
+                                            </span>
+                                            <span><input id="q3c" name="q3" type="radio" value="social"><label for="q3c" class="radio-social">Become famous</label></span>
+                                            <span><input id="q3a" name="q3" type="radio" value="mobile"><label for="q3a" class="radio-mobile">Mobile market</label></span>
+                                        </div>
                                     </li>
                                     <li data-input-trigger>
                                         <label class="fs-field-label fs-anim-upper" data-info="We'll make sure to use it all over">Choose a color for your website.</label>
-                                        <select class="cs-select cs-skin-boxes fs-anim-lower"  tabindex="4">
+                                        <select id="color" name="color" class="cs-select cs-skin-boxes fs-anim-lower" tabindex="4">
                                             <option value="" disabled="disabled" selected="selected">Pick a color</option>
                                             <option value="#588c75" data-class="color-588c75">#588c75</option>
                                             <option value="#b0c47f" data-class="color-b0c47f">#b0c47f</option>
@@ -165,7 +171,7 @@
                                         <input class="fs-mark fs-anim-lower" id="q5" name="q5" type="number" placeholder="1000" step="100" min="100"  tabindex="6">
                                     </li>
                                 </ol>
-                                <button class="fs-submit" type="submit" tabindex="7">Send answers</button>
+                                <button id="form-submit" class="fs-submit" type="submit" tabindex="7">Send answers</button>
                             </form>
                         </div>
                     </div>
@@ -297,6 +303,26 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.className = document.body.className.replace("not-loaded","loaded");
     }, 2500);
 }, false);
+</script>
+<script>
+    $(document).ready(function() {
+        $("#form-submit").click(function() {
+            $("#form-submit-loader").show();
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var priority = $("#priority").val();
+            var color = $("#color").val();
+            $.post("form-processor.php", {
+                name: name,
+                email: email,
+                mobile: priority,
+                address: color
+            }, function(status) {
+                $("#form-submit-loader").hide(); // To Hide progress bar
+                alert(status);
+            });
+        });
+    });
 </script>
 </body>
 </html>
