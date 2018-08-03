@@ -10,9 +10,11 @@
     <link rel="icon" type="image/png" href="/assets/img/favicons/favicon.png">
 </head>
 
-<body>
+<body class="not-loaded">
+
 <div id="loader-wrapper">
     <div id="loader"></div>
+</div>
     <section class="et-hero-tabs loader-section" style="opacity: 0;visibility: hidden;">
         <div class="jusitfy-center">
             <!--  Video is muted & autoplays, placed after major DOM elements for performance & has an image fallback  -->
@@ -199,7 +201,6 @@
             </div>
         </section>
     </main>
-</div>
 <!-- Deferred Styles -->
 <noscript id="deferred-styles">
     <link rel="stylesheet" href="/assets/stylesheets/foundation.min.css">
@@ -292,7 +293,9 @@ $(function() {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    document.body.className += ' ' + 'loaded';
+    setTimeout(function () {
+        document.body.className = document.body.className.replace("not-loaded","loaded");
+    }, 2500);
 }, false);
 </script>
 </body>
