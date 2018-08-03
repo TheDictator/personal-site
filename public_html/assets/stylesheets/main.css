@@ -195,7 +195,7 @@ a {
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background: #fff;
-  z-index: 10;
+  z-index: 100;
 }
 
 .et-hero-tabs-container--top {
@@ -292,6 +292,7 @@ body .base {
   border-bottom-right-radius: 100%;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 body .base .menu {

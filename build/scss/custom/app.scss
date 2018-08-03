@@ -157,7 +157,7 @@ a {
   height:102px;
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
   background: #fff;
-  z-index: 10;
+  z-index: 100;
   &--top {
     position: fixed;
     top: 0;
@@ -233,7 +233,7 @@ body {
     transition: all 1s cubic-bezier(0.50, -0.75, 0.05, 1);
     border-bottom-right-radius: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    //overflow:hidden;
+    overflow:hidden;
     .menu {
       z-index: 100;
       background-color: #FFFFFF;
