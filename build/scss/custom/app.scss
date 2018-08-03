@@ -2206,6 +2206,7 @@ nav {
 
 .overview .fs-form-wrap {
   height: auto;
+  top: -10%;
 }
 
 /* Title */
@@ -2239,7 +2240,6 @@ nav {
   height: 100%;
   color: #512DA8;
   font-size: 1.2em;
-  margin-top: -10%;
   .fs-fields::before {
     display: block;
     margin-bottom: 3rem;

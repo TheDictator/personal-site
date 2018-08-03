@@ -2461,6 +2461,7 @@ nav .next {
 
 .overview .fs-form-wrap {
   height: auto;
+  top: -10%;
 }
 
 /* Title */
@@ -2493,7 +2494,6 @@ nav .next {
   height: 100%;
   color: #512DA8;
   font-size: 1.2em;
-  margin-top: -10%;
 }
 
 .fs-form-overview .fs-fields::before {
