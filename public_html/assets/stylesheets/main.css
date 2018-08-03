@@ -160,6 +160,7 @@ a {
           align-items: center;
   height: 100vh;
   position: relative;
+  overflow-y: scroll;
   background: #eee;
   text-align: center;
   color: #212121;
@@ -2427,8 +2428,11 @@ nav .next {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  padding-top: 13%;
   background-color: #3b3f45;
+}
+
+#tab-contact .cell {
+  padding-top: 20%;
 }
 
 #tab-projects {

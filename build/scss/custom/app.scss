@@ -131,7 +131,7 @@ a {
   align-items: center;
   height: 100vh;
   position: relative;
-  //overflow: scroll;
+  overflow-y: scroll;
   background: #eee;
   text-align: center;
   color: $primary-text;
@@ -2177,8 +2177,10 @@ nav {
 }
 #tab-contact {
   justify-content: flex-start;
-  padding-top: 13%;
   background-color: #3b3f45;
+  .cell {
+    padding-top: 20%;
+  }
 }
 #tab-projects {
   justify-content: flex-start;
