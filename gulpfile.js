@@ -85,7 +85,6 @@ gulp.task('sass-lint', function() {
 
 gulp.task('js-plugins', function(){
     return gulp.src(['./build/js/scripts/*.js'])
-        .pipe(plumber({errorHandler: onError}))
         .pipe(minifyJS())
         .pipe(concat('scripts.min.js'))
         .pipe(uglify({ mangle: false }))
@@ -104,7 +103,6 @@ gulp.task('js-custom', function(){
 gulp.task('watch', function() {
     gulp.watch('./build/scss/custom/app.scss', ['styles']);
     gulp.watch('./build/js/scripts/*.js', ['js-plugins']);
-    gulp.watch('./build/js/custom/init.js', ['js-custom']);
     gulp.watch('./build/index.html', ['pages']);
 });
 
