@@ -82,13 +82,15 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('public_html/assets/stylesheets'))
         .pipe(RevAll.manifestFile())
         .pipe(gulp.dest('public_html/assets/stylesheets'))
+        .pipe(notify("Styles Compiled"));
 });
 
 gulp.task('sass-lint', function() {
     gulp.src('./build/scss/custom/app.scss')
         .pipe(sassLint())
         .pipe(sassLint.format())
-        .pipe(sassLint.failOnError());
+        .pipe(sassLint.failOnError())
+        .pipe(notify("SASS Linted"));
 });
 
 gulp.task('js-plugins', function(){
@@ -123,7 +125,8 @@ gulp.task("rev", ["default"], function(){
             collapseWhitespace: true,
             removeComments: true
         }))
-        .pipe(gulp.dest('public_html'));
+        .pipe(gulp.dest('public_html'))
+        .pipe(notify("Asset Versions Updated"));
 });
 // BUILD TASKS
 // ------------
