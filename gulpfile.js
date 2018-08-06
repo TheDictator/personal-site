@@ -11,7 +11,12 @@ var gulp        = require('gulp'),
     minifyJS = require('gulp-minify'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    htmlmin = require('gulp-htmlmin');
+    htmlmin = require('gulp-htmlmin'),
+    rev = require('gulp-rev'),
+    RevAll = require('gulp-rev-all'),
+    manifestFile = require('gulp-manifest');
+
+
 
 var displayError = function(error) {
 
@@ -62,7 +67,6 @@ gulp.task('pages', function() {
         }))
         .pipe(gulp.dest('./public_html'));
 });
-
 gulp.task('styles', function() {
     return gulp.src('./build/scss/custom/app.scss')
         .pipe(plumber({errorHandler: onError}))
@@ -70,10 +74,12 @@ gulp.task('styles', function() {
         .pipe(sass(sassOptions))
         .pipe(prefix(prefixerOptions))
         .pipe(rename('main.css'))
-        .pipe(gulp.dest('./public_html/assets/stylesheets'))
+        .pipe(gulp.dest('./build/stylesheets'))
         .pipe(cssmin())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./public_html/assets/stylesheets'))
+        .pipe(RevAll.revision())
+        .pipe(gulp.dest('public_html/assets/stylesheets'))
+        .pipe(RevAll.manifestFile())
+        .pipe(gulp.dest('public_html/assets/stylesheets'))
 });
 
 gulp.task('sass-lint', function() {
@@ -97,6 +103,7 @@ gulp.task('js-custom', function(){
         .pipe(minifyJS())
         .pipe(concat('custom.min.js'))
         .pipe(uglify({ mangle: false }))
+        .pipe(gulp.dest('./public_html/assets/js'))
         .pipe(gulp.dest('./public_html/assets/js'));
 });
 
@@ -105,12 +112,11 @@ gulp.task('watch', function() {
     gulp.watch('./build/js/scripts/*.js', ['js-plugins']);
     gulp.watch('./build/index.html', ['pages']);
 });
-
 // BUILD TASKS
 // ------------
 
 gulp.task('default', function(done) {
-    runSequence('styles', 'watch', done);
+    runSequence('styles','watch', done);
 });
 
 gulp.task('build', function(done) {
