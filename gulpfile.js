@@ -14,7 +14,9 @@ var gulp        = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     rev = require('gulp-rev'),
     RevAll = require('gulp-rev-all'),
-    manifestFile = require('gulp-manifest');
+    manifestFile = require('gulp-manifest'),
+    revCollector = require('gulp-rev-collector'),
+    revReplace = require('gulp-rev-replace');
 
 
 
@@ -111,6 +113,17 @@ gulp.task('watch', function() {
     gulp.watch('./build/scss/custom/app.scss', ['styles']);
     gulp.watch('./build/js/scripts/*.js', ['js-plugins']);
     gulp.watch('./build/index.html', ['pages']);
+});
+
+gulp.task("rev", ["default"], function(){
+    var manifest = gulp.src("public_html/rev-manifest.json");
+    return gulp.src("build/index.html")
+        .pipe(revReplace({manifest: manifest}))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            removeComments: true
+        }))
+        .pipe(gulp.dest('public_html'));
 });
 // BUILD TASKS
 // ------------
