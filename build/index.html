@@ -55,6 +55,69 @@
         <section class="et-slide" id="tab-projects">
             <h1>Projects</h1>
             <h3>assortment of projects over the years.</h3>
+            <!-- Bottom bar with filter and cart info -->
+            <div class="bar">
+                <div class="filter">
+                    <span class="filter__label">Filter: </span>
+                    <button class="action filter__item filter__item--selected" data-filter="*">All</button>
+                    <button class="action filter__item" data-filter=".jackets">
+                        <i class="icon icon--jacket"></i>
+                        <span class="action__text">Jackets</span>
+                    </button>
+                    <button class="action filter__item" data-filter=".shirts">
+                        <i class="icon icon--shirt"></i>
+                        <span class="action__text">Shirts</span>
+                    </button>
+                    <button class="action filter__item" data-filter=".dresses">
+                        <i class="icon icon--dress"></i>
+                        <span class="action__text">Dresses</span>
+                    </button>
+                    <button class="action filter__item" data-filter=".trousers">
+                        <i class="icon icon--trousers"></i>
+                        <span class="action__text">Trousers</span>
+                    </button>
+                    <button class="action filter__item" data-filter=".shoes">
+                        <i class="icon icon--shoe"></i>
+                        <span class="action__text">Shoes</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Main view -->
+            <div class="view">
+                <!-- Grid -->
+                <section class="grid">
+                    <!-- Loader -->
+                    <img class="grid__loader" src="/assets/img/grid.svg" width="60" alt="Loader image" />
+                    <!-- Grid sizer for a fluid Isotope (Masonry) layout -->
+                    <div class="grid__sizer"></div>
+                    <!-- Grid items -->
+                    <div class="grid__item shirts">
+                        <div class="slider">
+                            <div class="slider__item"><img src="https://loremflickr.com/500/600/design?random=2" alt="product1_1" /></div>
+                            <div class="slider__item"><img src="https://loremflickr.com/500/600/design?random=2" alt="product1_2" /></div>
+                            <div class="slider__item"><img src="https://loremflickr.com/500/600/design?random=2" alt="product1_3" /></div>
+                        </div>
+                        <div class="meta">
+                            <h3 class="meta__title">Miriam Classic</h3>
+                            <span class="meta__brand">Miriam</span>
+                            <span class="meta__price">$79</span>
+                        </div>
+                    </div>
+                    <div class="grid__item grid__item--size-a jackets">
+                        <!-- ... -->
+                    </div>
+                    <div class="grid__item shoes">
+                        <!-- ... -->
+                    </div>
+                    <div class="grid__item dresses">
+                        <!-- ... -->
+                    </div>
+                    <div class="grid__item trousers">
+                        <!-- ... -->
+                    </div>
+                </section>
+                <!-- /grid-->
+            </div>
             <div class="grid-container">
                 <div class="grid-x grid-padding-x small-up-1 large-up-3">
                     <div class="cell">
@@ -104,7 +167,20 @@
         </section>
         <section class="et-slide" id="tab-skills">
             <h1>Skills</h1>
-            <h3>something about my Experiences</h3></section>
+            <h3>something about my Experiences</h3>
+            <span class="devicons devicons-html5"></span>
+            <span class="devicons devicons-php"></span>
+            <span class="devicons devicons-mysql"></span>
+            <!--<span class="devicons devicons-foundation"></span>-->
+            <span class="devicons devicons-bootstrap"></span>
+            <span class="devicons devicons-gulp"></span>
+            <span class="devicons devicons-sass"></span>
+            <span class="devicons devicons-less"></span>
+            <span class="devicons devicons-javascript_badge"></span>
+            <span class="devicons devicons-php"></span>
+            <span class="devicons devicons-magento"></span>
+            <span class="devicons devicons-drupal"></span>
+        </section>
         <section class="et-slide" id="tab-kitchen">
             <h1>Kitchen</h1>
             <h3>something about my Kitchen (components)</h3></section>
@@ -188,6 +264,7 @@
     <link rel="stylesheet" href="/assets/stylesheets/foundation.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/stylesheets/snipcart.min.css">
+    <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/assets/stylesheets/main.css">
 </noscript>
 
@@ -207,6 +284,8 @@ else window.addEventListener('load', loadDeferredStyles);
 <script type="text/javascript" src="/assets/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="/assets/js/slider-nav.js"></script>
+<script src="/assets/js/isotope.pkgd.min.js"></script>
+<script src="/assets/js/flickity.pkgd.min.js"></script>
 <script type="text/javascript" src="/assets/js/scripts.min.js"></script>
 <script type="text/javascript">
 $('#toTop').click(function() {
@@ -222,7 +301,132 @@ $('.section-static').click(function() {
 $("[href='#tab-contact']").click(function(){
     $('#q1').focus();
 });
+/**
+ * main.js
+ * http://www.codrops.com
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ * Copyright 2015, Codrops
+ * http://www.codrops.com
+ */
+;(function(window) {
 
+    'use strict';
+
+    var support = { animations : Modernizr.cssanimations },
+        animEndEventNames = { 'WebkitAnimation' : 'webkitAnimationEnd', 'OAnimation' : 'oAnimationEnd', 'msAnimation' : 'MSAnimationEnd', 'animation' : 'animationend' },
+        animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
+        onEndAnimation = function( el, callback ) {
+            var onEndCallbackFn = function( ev ) {
+                if( support.animations ) {
+                    if( ev.target != this ) return;
+                    this.removeEventListener( animEndEventName, onEndCallbackFn );
+                }
+                if( callback && typeof callback === 'function' ) { callback.call(); }
+            };
+            if( support.animations ) {
+                el.addEventListener( animEndEventName, onEndCallbackFn );
+            }
+            else {
+                onEndCallbackFn();
+            }
+        };
+
+    // from http://www.sberry.me/articles/javascript-event-throttling-debouncing
+    function throttle(fn, delay) {
+        var allowSample = true;
+
+        return function(e) {
+            if (allowSample) {
+                allowSample = false;
+                setTimeout(function() { allowSample = true; }, delay);
+                fn(e);
+            }
+        };
+    }
+
+    // sliders - flickity
+    var sliders = [].slice.call(document.querySelectorAll('.slider')),
+        // array where the flickity instances are going to be stored
+        flkties = [],
+        // grid element
+        grid = document.querySelector('.grid'),
+        // isotope instance
+        iso,
+        // filter ctrls
+        filterCtrls = [].slice.call(document.querySelectorAll('.filter > button'));
+
+    function init() {
+        // preload images
+        imagesLoaded(grid, function() {
+            initFlickity();
+            initIsotope();
+            initEvents();
+            classie.remove(grid, 'grid--loading');
+        });
+    }
+
+    function initFlickity() {
+        sliders.forEach(function(slider){
+            var flkty = new Flickity(slider, {
+                prevNextButtons: false,
+                wrapAround: true,
+                cellAlign: 'left',
+                contain: true,
+                resize: false
+            });
+
+            // store flickity instances
+            flkties.push(flkty);
+        });
+    }
+
+    function initIsotope() {
+        iso = new Isotope( grid, {
+            isResizeBound: false,
+            itemSelector: '.grid__item',
+            percentPosition: true,
+            masonry: {
+                // use outer width of grid-sizer for columnWidth
+                columnWidth: '.grid__sizer'
+            },
+            transitionDuration: '0.6s'
+        });
+    }
+
+    function initEvents() {
+        filterCtrls.forEach(function(filterCtrl) {
+            filterCtrl.addEventListener('click', function() {
+                classie.remove(filterCtrl.parentNode.querySelector('.filter__item--selected'), 'filter__item--selected');
+                classie.add(filterCtrl, 'filter__item--selected');
+                iso.arrange({
+                    filter: filterCtrl.getAttribute('data-filter')
+                });
+                recalcFlickities();
+                iso.layout();
+            });
+        });
+
+        // window resize / recalculate sizes for both flickity and isotope/masonry layouts
+        window.addEventListener('resize', throttle(function(ev) {
+            recalcFlickities()
+            iso.layout();
+        }, 50));
+
+    }
+
+
+    function recalcFlickities() {
+        for(var i = 0, len = flkties.length; i < len; ++i) {
+            flkties[i].resize();
+        }
+    }
+
+    init();
+
+})(window);
 $(function() {
     $('.material-card > .mc-btn-action').click(function () {
         var card = $(this).parent('.material-card');
